@@ -21,13 +21,13 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore
-        run: dotnet restore KeyVault.slnx
+        run: dotnet restore KeyVault/KeyVault.slnx
 
       - name: Build
-        run: dotnet build KeyVault.slnx --configuration Release --no-restore
+        run: dotnet build KeyVault/KeyVault.slnx --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish KeyVault.slnx -c Release -o ${{ github.workspace }}/publish --no-build
+        run: dotnet publish KeyVault/KeyVault.slnx -c Release -o ${{ github.workspace }}/publish --no-build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -62,4 +62,3 @@ jobs:
           app-name: 'assignmate-kv-demo'
           slot-name: 'Production'
           package: ./publish
-
